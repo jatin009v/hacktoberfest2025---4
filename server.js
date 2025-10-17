@@ -1,14 +1,15 @@
-// server.js — local development server to expose /api/chat
+/// server.js — serve API + Vite frontend
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import chatHandler from "./api/chat.js"; // import the handler
+import path from "path";
+import chatHandler from "./api/chat.js";
 
 dotenv.config();
 
 const app = express();
 
-// CORS: allow localhost only during development, allow all in production
+// CORS
 app.use(
   cors({
     origin:
@@ -17,18 +18,21 @@ app.use(
         : "*",
   })
 );
-
 app.use(express.json());
 
-// Attach the handler for POST /api/chat
+// API route
 app.post("/api/chat", chatHandler);
 
-// Root route to confirm server is running
-app.get("/", (req, res) =>
-  res.send("Server is running. Use POST /api/chat for API requests.")
-);
+// Serve Vite build (dist folder)
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "dist")));
 
-// Start server (only used during local development)
+// Serve index.html for all non-API routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
+});
+
+// Start server (used for local development)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
