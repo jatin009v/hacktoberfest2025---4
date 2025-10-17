@@ -6,5 +6,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  base: './' // ⚡ relative path, absolute / ya empty mat likho
+  base: './' // relative paths
 });
