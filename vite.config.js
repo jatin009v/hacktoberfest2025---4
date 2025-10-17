@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: "./",          // keep the dot-slash for safe asset loading
   build: {
-    outDir: "dist", // ensure output folder is dist
+    outDir: "dist",
   },
-  base: "", // leave empty (Vercel samajh lega)
 });
