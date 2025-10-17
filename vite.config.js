@@ -10,4 +10,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: './', // important for relative paths in production
 })
