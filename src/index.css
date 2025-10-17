@@ -1,0 +1,37 @@
+/* src/index.css */
+
+/* Google Fonts — must come first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom variables */
+:root {
+  --radius: 0.75rem;
+  --primary: #6366f1;
+  --primary-600: #4f46e5;
+}
+
+/* Full height layout */
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Light & dark mode background & text */
+body {
+  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+}
+
+/* Reusable card helper */
+.card {
+  @apply rounded-xl bg-white shadow dark:bg-gray-800;
+}
+
+/* Custom colors */
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+.bg-primary-600 { background-color: var(--primary-600); }
