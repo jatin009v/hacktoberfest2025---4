@@ -6,7 +6,8 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },  
+    { "src": "/(.*)", "dest": "/index.html" }         
   ]
 }
 
